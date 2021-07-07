@@ -44,6 +44,8 @@ export class DataService {
     "quantity": 10,
     "discount": 0
   }];
+  currentQuery: string ='';
+  all_Query=[]
   constructor() { }
 
   getData(param: query){
