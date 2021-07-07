@@ -1,27 +1,38 @@
 # SQL-Editor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+This project is a part of Atlan Frontend Engineer Hiring Process.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## What does the project do?
+This project is a **simple UI of a SQL Editor** for data analysts which helps them to query data. Below are the **UI only features**:
+ - Users can use SQL editor to write their queries
+ - SQL Editor has Auto Completion feature for faster query writing
+ - Users can view the data tables and the available columns on the left panel
+ - Users can execute or save their queries for future use
+ - Users can download the quesry results in CSV format
+ - Users can share the query results with fellow analysts via email.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## What have I used in this project?
+- Angular version 12.1.0
+- Tailwind CSS 2.2.4
+- ng-2-ace-editor 0.3.9
 
-## Build
+## Demo
+[Project hosted on Netlify](https://happy-jennings-37ebca.netlify.app/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Page Load Time
+The Page Load Time was calculated using Google Chrome's Performance developer tool.
+###  1.3 second
 
-## Running unit tests
+![Page Load Time](https://i.ibb.co/t89csbP/Screenshot-2021-07-07-at-5-11-36-PM.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## What I did to optimize page load time?
+1. Used CSS Purge to remove unused styles.
+2. Minified the build files using webpack.
+3. Enabled CSS JIT so that build file is much smaller.
+4. Used Netlify to host the static files which uses CDN and caches the static files.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## What else can be done to optimise the page load time?
+1. Use of compression mechanism like Brotli
+2. Lossless image compression
