@@ -34,5 +34,5 @@ The Page Load Time was calculated using Google Chrome's Performance developer to
 4. Used Netlify to host the static files which uses CDN and caches the static files.
 
 ## What else can be done to optimise the page load time?
-1. Use of compression mechanism like Brotli or Gzip
+1. Use of compression mechanism like Brotli
 2. Lossless image compression
