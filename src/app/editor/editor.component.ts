@@ -28,9 +28,6 @@ export class EditorComponent implements OnInit {
   @ViewChild('editor') editor!:  AceEditorComponent;
   sqlQuery!: string;
 
-
-
-
   constructor(private modalservice: NgbModal,
     private data: DataService ) {
       config.set(
@@ -42,7 +39,7 @@ export class EditorComponent implements OnInit {
          "ace/mode/javascript_worker",
          "https://cdn.jsdelivr.net/npm/ace-builds@1.4.8/src-noconflict/worker-javascript.js"
       );
-     
+
 
      }
 
@@ -67,12 +64,13 @@ export class EditorComponent implements OnInit {
 
   onChange(code: any) {
     this.sqlQuery = code;
-    
-  } 
+
+  }
 
   runQuery(){
-    let param : query = {queryString: this.data.currentQuery};
+    let param : query = {queryString: this.sqlQuery};
     this.data.currentQuery = this.sqlQuery;
+    this.data.all_Query?.push(this.sqlQuery);
     if(this.sqlQuery) {
       this.data.getData(param).subscribe(res=> {
         this.tableData = res;
@@ -84,7 +82,7 @@ export class EditorComponent implements OnInit {
       const modalRef = this.modalservice.open(ModalComponent);
       modalRef.componentInstance.isEmpty = true;
     }
-  
+
   }
 
   SaveQuery() {

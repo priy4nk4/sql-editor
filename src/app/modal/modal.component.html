@@ -26,23 +26,41 @@
                 Query saved successfully
               </h3>
             </div>
-            <div class="p-8 flex items-center justify-center bg-white" *ngIf="isShare">
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+
+            <div class="p-4 flex flex-col items-center justify-center bg-white" *ngIf="isShare">
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                  Share Results
+                </h3>
+              </div>
+
+                <div class="mt-4 flex items-center">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mr-4">Email</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
-                      <input type="email" name="email" id="email"  ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngClass]="email.errors ?  'border-red-300 text-red-900 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md': 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md'"   
+                      <input type="email" name="email" id="email" ngModel #emailref="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngClass]="emailref.errors ?  'border-red-300 text-red-900 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md': 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md'"   
                       placeholder="you@example.com" aria-describedby="email">
-                      <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none" *ngIf="email.invalid">
+                      <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none" *ngIf="emailref.invalid">
                         <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                           <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                         </svg>
                       </div>
                     </div> 
-                    <div *ngIf="email.touched">
-                      <p *ngIf="email.errors?.pattern" class="mt-2 text-sm text-red-600" id="email-error">Enter valid email adress.</p>
-                      <p *ngIf="email.errors?.required" class="mt-2 text-sm text-red-600">Email is a required field!</p>
-                    </div>
+                   
                 </div>
+                <div *ngIf="emailref.touched">
+                  <p *ngIf="emailref.errors?.pattern" class="mt-2 text-sm text-red-600" id="email-error">Enter valid email adress.</p>
+                  <p *ngIf="emailref.errors?.required" class="mt-2 text-sm text-red-600">Email is a required field!</p>
+                </div>
+
+
+                <div class="mt-5 sm:mt-6 justify-end flex" (click)="close()">
+                  <button type="button" class="inline-flex justify-center rounded-md mr-4 border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" [disabled]="emailref.invalid">
+                    Send
+                  </button>
+                  <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    cancel
+                  </button>
+                </div> 
             </div>
             <div class="mt-3 text-center sm:mt-5" *ngIf="isReport">
               <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
@@ -56,14 +74,16 @@
                 </p>
               </div>
             </div>
-            <div class="mt-5 sm:mt-6" (click)="close()" >
+            <div class="mt-5 sm:mt-6" (click)="close()" *ngIf="!isShare">
               <button type="button" *ngIf="isExecute" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
                 Go back to dashboard
               </button>
-              <button type="button"  *ngIf="isShare || isEmpty || isSave || isReport" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
+              <button type="button"  *ngIf="isEmpty || isSave || isReport" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
                 Ok
               </button>
             </div>
+
+         
           </div>
       </div>
     </div>
