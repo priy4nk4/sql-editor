@@ -22,6 +22,7 @@ This project is a **simple UI of a SQL Editor** for data analysts which helps th
 [Project hosted on Netlify](https://happy-jennings-37ebca.netlify.app/)
 
 ## Page Load Time
+The Page Load Time was calculated using Google Chrome's Performance developer tool.
 ###  1.3 second
 
 ![Page Load Time](https://i.ibb.co/t89csbP/Screenshot-2021-07-07-at-5-11-36-PM.png)
